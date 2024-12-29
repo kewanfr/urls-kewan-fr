@@ -1,0 +1,7 @@
+old/
+
+src/db_pass.php
+
+node_modules/
+ignore/
+package-lock.json
