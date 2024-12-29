@@ -160,11 +160,67 @@ if ($admins[0]['admin'] == 1) {
                 <p class="text-gray-600">Vous n'avez encore créé aucun lien. Commencez dès maintenant !</p>
             <?php endif; ?>
         </div>
+
+        <?php if ($admins[0]['admin'] == 1): ?>
+            <div class="mt-10">
+                <h2 class="text-2xl font-semibold mb-4 text-center text-gray-800">Tous les Liens</h2>
+                <?php if (!empty($allLinks)): ?>
+                    <div class="overflow-x-auto">
+                        <table class="min-w-full divide-y divide-gray-200">
+                            <thead class="bg-gray-50">
+                                <tr>
+                                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Short URL</th>
+                                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Original URL</th>
+                                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Publique</th>
+                                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Expiration</th>
+                                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Clics</th>
+                                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody class="bg-white divide-y divide-gray-200">
+                                <?php foreach ($allLinks as $link): ?>
+                                <tr>
+                                    <td class="px-6 py-4 whitespace-nowrap">
+                                        <a href="<?= htmlspecialchars(getBaseUrl() . '/' . $link['short_code']) ?>" target="_blank" class="text-blue-500 hover:text-blue-700">
+                                            <?= htmlspecialchars(getBaseUrl() . '/' . $link['short_code']) ?>
+                                        </a>
+                                    </td>
+                                    <td class="px-6 py-4 whitespace-nowrap">
+                                        <a href="<?= htmlspecialchars($link['original_url']) ?>" target="_blank" class="text-blue-500 hover:text-blue-700">
+                                            <?= htmlspecialchars($link['original_url']) ?>
+                                        </a>
+                                    </td>
+                                    <td class="px-6 py-4 whitespace-nowrap">
+                                        <?= $link['is_public'] ? '<span class="text-green-600 font-medium">Oui</span>' : '<span class="text-red-600 font-medium">Non</span>' ?>
+                                    </td>
+                                    <td class="px-6 py-4 whitespace-nowrap">
+                                        <?= $link['expires_at'] ? htmlspecialchars($link['expires_at']) : '<span class="text-gray-500">Jamais</span>' ?>
+                                    </td>
+                                    <td class="px-6 py-4 whitespace-nowrap">
+                                        <?= htmlspecialchars($link['clicks']) ?>
+                                    </td>
+                                    <td class="px-6 py-4 whitespace-nowrap">
+                                        <div class="flex space-x-2">
+                                            <a href="edit?id=<?= $link['id'] ?>" class="text-yellow-500 hover:text-yellow-700">Éditer</a>
+                                            <a href="delete?id=<?= $link['id'] ?>" onclick="return confirm('Supprimer ce lien ?')" class="text-red-500 hover:text-red-700">Supprimer</a>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <?php endforeach; ?>
+                            </tbody>
+                        </table>
+                    </div>
+                <?php else: ?>
+                    <p class="text-center text-gray-600">Aucun lien public disponible.</p>
+                <?php endif; ?>
+            </div>
+        <?php endif; ?>
     </main>
+    
 
     <footer class="bg-white shadow mt-10">
         <div class="container mx-auto px-4 py-6 text-center text-gray-500">
-            &copy; <?= date('Y') ?> Raccourcisseur d'URLs. Tous droits réservés.
+            &copy; <?= date('Y') ?> Urls Kéwan.fr. Tous droits réservés.
         </div>
     </footer>
 </body>

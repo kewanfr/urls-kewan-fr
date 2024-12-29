@@ -16,6 +16,16 @@ if (isset($_GET['id'])) {
     $stmt->execute(['id' => $link_id, 'user_id' => $user_id]);
     $link = $stmt->fetch();
 
+    $stmt2 = $pdo->prepare("SELECT admin FROM users_links WHERE id = :id");
+    $stmt2->execute(['id' => $user_id]);
+    $admin = $stmt2->fetch();
+
+    if ($admin['admin'] == 1) {
+        $stmt = $pdo->prepare("SELECT * FROM links WHERE id = :id");
+        $stmt->execute(['id' => $link_id]);
+        $link = $stmt->fetch();
+    }
+
     if ($link) {
         // Supprimer le lien
         $stmt = $pdo->prepare("DELETE FROM links WHERE id = :id");

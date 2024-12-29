@@ -94,11 +94,11 @@ $public_links = getPublicLinks($pdo);
                         <?php foreach ($public_links as $link): ?>
                             <li class="bg-white shadow p-4 rounded-lg flex justify-between items-center">
                                 <div>
-                                    <a href="<?= htmlspecialchars($link['short_code']) ?>" class="text-blue-500 hover:text-blue-700 font-medium"><?= htmlspecialchars($link['short_code']) ?></a>
+                                    <a href="<?= htmlspecialchars($link['short_code']) ?>" target="_blank" class="text-blue-500 hover:text-blue-700 font-medium"><?= htmlspecialchars($link['short_code']) ?></a>
                                     <span class="text-gray-600">→</span>
                                     <span class="text-gray-700"><?= htmlspecialchars($link['original_url']) ?></span>
                                 </div>
-                                <a href="<?= htmlspecialchars($link['short_code']) ?>" class="text-sm text-green-500 hover:underline">Visiter</a>
+                                <a href="<?= htmlspecialchars($link['short_code']) ?>" target="_blank" class="text-sm text-green-500 hover:underline">Visiter</a>
                             </li>
                         <?php endforeach; ?>
                     </ul>

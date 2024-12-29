@@ -155,7 +155,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     <footer class="bg-white shadow mt-10">
         <div class="container mx-auto px-4 py-6 text-center text-gray-500">
-            &copy; <?= date('Y') ?> Raccourcisseur d'URLs. Tous droits réservés.
+            &copy; <?= date('Y') ?> Urls Kéwan.fr. Tous droits réservés.
         </div>
     </footer>
 </body>
