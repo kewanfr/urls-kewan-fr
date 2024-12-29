@@ -9,6 +9,18 @@ RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
 
 RewriteBase /
 
+# Règles spécifiques pour /index et /dashboard
+RewriteRule ^/$ index.php [L]
+RewriteRule ^index$ index.php [L]
+RewriteRule ^dashboard$ dashboard.php [L]
+RewriteRule ^login$ login.php [L]
+RewriteRule ^register$ register.php [L]
+RewriteRule ^logout$ logout.php [L]
+RewriteRule ^edit$ edit_link.php [L]
+RewriteRule ^create$ create_link.php [L]
+RewriteRule ^delete$ delete_link.php [L]
+RewriteRule ^home$ index.php [L]
+
 # Si la requête est exactement 'index.php', ne pas réécrire et arrêter les règles
 RewriteRule ^index\.php$ - [L]
 
