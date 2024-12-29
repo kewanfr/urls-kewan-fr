@@ -14,7 +14,7 @@ $public_links = getPublicLinks($pdo);
 <head>
     <meta charset="UTF-8">
     <title>Raccourcisseur d'URLs</title>
-    <link rel="stylesheet" href="assets/css/output_style.css">
+    <link rel="stylesheet" href="assets/css/style.css">
 </head>
 
     <body class="bg-gray-100 min-h-screen flex flex-col">
@@ -29,21 +29,21 @@ $public_links = getPublicLinks($pdo);
                 <div class="bg-white shadow-md rounded-lg p-6 mb-6 text-center">
                     <p class="text-lg">Bienvenue, Kéwan <?= htmlspecialchars($_SESSION['user_email']) ?>!</p>
                     <div class="mt-4">
-                        <a href="dashboard.php" class="text-blue-500 hover:text-blue-700 mx-2">Tableau de bord</a>
+                        <a href="dashboard" class="text-blue-500 hover:text-blue-700 mx-2">Tableau de bord</a>
                         <span class="text-gray-400">|</span>
-                        <a href="logout.php" class="text-blue-500 hover:text-blue-700 mx-2">Déconnexion</a>
+                        <a href="logout" class="text-blue-500 hover:text-blue-700 mx-2">Déconnexion</a>
                     </div>
                 </div>
             <?php else: ?>
                 <div class="bg-white shadow-md rounded-lg p-6 mb-6 text-center">
-                    <a href="login.php" class="text-blue-500 hover:text-blue-700 mx-2">Connexion</a>
+                    <a href="login" class="text-blue-500 hover:text-blue-700 mx-2">Connexion</a>
                     <span class="text-gray-400">|</span>
-                    <a href="register.php" class="text-blue-500 hover:text-blue-700 mx-2">Inscription</a>
+                    <a href="register" class="text-blue-500 hover:text-blue-700 mx-2">Inscription</a>
                 </div>
             <?php endif; ?>
     
             <div class="bg-white shadow-md rounded-lg p-6">
-                <form action="create_link.php" method="POST" class="space-y-6">
+                <form action="create_link" method="POST" class="space-y-6">
                     <div>
                         <label for="original_url" class="block text-sm font-medium text-gray-700">URL à raccourcir :</label>
                         <input type="url" id="original_url" name="original_url" required placeholder="https://exemple.com"

@@ -19,7 +19,7 @@ session_start();
 
 $url = isset($_SERVER['REQUEST_URI']) ? trim($_SERVER['REQUEST_URI'], '/') : '';
 
-if ($url === '' || $url === '/' || $url == 'index.php' || $url == 'index') {
+if ($url === '' || $url === '/' || $url == 'index.php' || $url == 'index' || $url == 'home') {
     // Afficher la page d'accueil
     require 'home.php';
     exit();
