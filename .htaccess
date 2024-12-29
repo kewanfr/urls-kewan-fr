@@ -1,0 +1,26 @@
+
+<IfModule mod_rewrite.c>
+
+
+RewriteEngine On
+
+# Transfère l'en-tête Authorization vers la variable d'environnement HTTP_AUTHORIZATION
+RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
+
+RewriteBase /
+
+# Si la requête est exactement 'index.php', ne pas réécrire et arrêter les règles
+RewriteRule ^index\.php$ - [L]
+
+# Si la requête correspond à un fichier existant ou à un répertoire, ne pas réécrire
+RewriteCond %{REQUEST_FILENAME} -f [OR]
+RewriteCond %{REQUEST_FILENAME} -d
+RewriteRule ^ - [L]
+
+# Vérifie si un fichier PHP correspondant existe
+RewriteCond %{DOCUMENT_ROOT}/$1.php -f
+RewriteRule ^([^/]+)/?$ $1.php [L]
+
+# Réécrit toutes les autres requêtes vers index.php en passant le chemin demandé en tant que paramètre
+RewriteRule ^(.*)$ /index.php?$1 [L]
+</IfModule>
