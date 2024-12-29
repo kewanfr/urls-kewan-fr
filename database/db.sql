@@ -1,0 +1,22 @@
+-- Table des utilisateurs
+CREATE TABLE users_links (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  email VARCHAR(255) NOT NULL UNIQUE,
+  password VARCHAR(255) NOT NULL,
+  admin BOOLEAN DEFAULT FALSE,
+  created_at DATETIME DEFAULT CURRENT_TIMESTAMP
+);
+
+-- Table des liens
+CREATE TABLE links (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  short_code VARCHAR(10) NOT NULL UNIQUE,
+  original_url TEXT NOT NULL,
+  user_id INT NULL,
+  IP VARCHAR(255) NULL,
+  is_public BOOLEAN DEFAULT FALSE,
+  created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+  expires_at DATETIME NULL,
+  clicks INT DEFAULT 0,
+  FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE SET NULL
+);
