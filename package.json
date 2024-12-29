@@ -1,0 +1,18 @@
+{
+  "name": "urls-kewan-fr",
+  "version": "1.0.0",
+  "main": "postcss.config.js",
+  "scripts": {
+    "build:css": "npx postcss ./asssets/css/style.css -o ./assets/css/output_style.css",
+    "dev": "tailwindcss -i ./assets/css/input.css -o ./assets/css/style.css --watch"
+
+  },
+  "author": "kewanb",
+  "license": "MIT",
+  "description": "",
+  "dependencies": {
+    "autoprefixer": "^10.4.20",
+    "postcss": "^8.4.49",
+    "tailwindcss": "^3.4.17"
+  }
+}
