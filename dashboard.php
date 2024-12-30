@@ -220,7 +220,7 @@ if ($admins[0]['admin'] == 1) {
 
     <footer class="bg-white shadow mt-10">
         <div class="container mx-auto px-4 py-6 text-center text-gray-500">
-            &copy; <?= date('Y') ?> Urls Kéwan.fr. Tous droits réservés.
+        <?= date('Y') ?> Urls Kéwan.fr - Développé par <a href="https://kevan.fr" class="text-blue-600 hover:text-blue-500">Kéwan</a>
         </div>
     </footer>
 </body>
