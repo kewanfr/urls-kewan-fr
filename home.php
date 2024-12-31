@@ -27,7 +27,7 @@ $public_links = getPublicLinks($pdo);
         <main class="flex-grow container mx-auto px-4 py-8">
             <?php if (isset($_SESSION['user_id'])): ?>
                 <div class="bg-white shadow-md rounded-lg p-6 mb-6 text-center">
-                    <p class="text-lg">Bienvenue, Kéwan <?= htmlspecialchars($_SESSION['user_email']) ?>!</p>
+                    <p class="text-lg">Bienvenue, <?= htmlspecialchars($_SESSION['user_email']) ?>!</p>
                     <div class="mt-4">
                         <a href="dashboard" class="text-blue-500 hover:text-blue-700 mx-2">Tableau de bord</a>
                         <span class="text-gray-400">|</span>
