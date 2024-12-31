@@ -43,7 +43,7 @@ $public_links = getPublicLinks($pdo);
             <?php endif; ?>
     
             <div class="bg-white shadow-md rounded-lg p-6">
-                <form action="create_link" method="POST" class="space-y-6">
+                <form action="create" method="POST" class="space-y-6">
                     <div>
                         <label for="original_url" class="block text-sm font-medium text-gray-700">URL à raccourcir :</label>
                         <input type="url" id="original_url" name="original_url" required placeholder="https://exemple.com"
