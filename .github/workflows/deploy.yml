@@ -1,0 +1,38 @@
+name: Deploy Project
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    container:
+      image: node:20
+    steps:
+      - name: Get latest code
+        uses: actions/checkout@v3
+  
+      - name: Push files
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.4
+        with:
+          server: ${{ secrets.FTP_HOST }}
+          username: ${{ secrets.FTP_USER }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          port: 21
+          local-dir: './'
+          server-dir: '/urls.kewan.fr/'
+          exclude: |
+            **/.git*
+            **/.git*/**
+            **/.github*/**
+            .gitignore
+            **/.vscode*
+            **/.vscode*/**
+            ./src/db_pass.php
+            postcss.config.js
+            tailwind.config.js
+            README.md
+            package.json
+            
